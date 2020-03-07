@@ -21,6 +21,20 @@ function checkLooseWin(){
 			cash=$((cash-BET))
 		fi
 	done
+	totalCash=$((cash-STAKE))
+	echo $totalCash
 }
-checkLooseWin
 
+function getTotalAmount() {
+	for ((day=1;day<=20;day++))
+	do
+		totalAmount=$((totalAmount + $(checkLooseWin) ))
+	done
+	if [ $totalAmount -gt 0 ]
+	then
+		echo "Total Amount Win:" $totalAmount
+	else
+		echo "Total Amount Loose:" $totalAmount
+	fi
+}
+getTotalAmount
