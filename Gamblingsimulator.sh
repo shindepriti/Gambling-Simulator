@@ -1,8 +1,13 @@
 #!/bin/bash -x
 echo "Wel-Come To Gambling Simulator "
 
+declare -A amount
+
+#CONSTANTS
 STAKE=100
 BET=1
+
+#Variable
 cash=$STAKE
 
 function calculatePercentage() {
@@ -29,12 +34,14 @@ function getTotalAmount() {
 	for ((day=1;day<=20;day++))
 	do
 		totalAmount=$((totalAmount + $(checkLooseWin) ))
+		amount[day$day]=$totalAmount
 	done
 	if [ $totalAmount -gt 0 ]
 	then
 		echo "Total Amount Win:" $totalAmount
 	else
 		echo "Total Amount Loose:" $totalAmount
-	fi
+	fi	
 }
 getTotalAmount
+
