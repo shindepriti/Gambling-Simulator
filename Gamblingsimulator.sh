@@ -34,7 +34,7 @@ function getTotalAmount() {
 	for ((day=1;day<=20;day++))
 	do
 		totalAmount=$((totalAmount + $(checkLooseWin) ))
-		amount[day$day]=$totalAmount
+		amount[$day]=$totalAmount
 	done
 	if [ $totalAmount -gt 0 ]
 	then
@@ -44,4 +44,25 @@ function getTotalAmount() {
 	fi	
 }
 getTotalAmount
+
+function getLuckyUnluckyDay(){
+for i in ${!amount[@]}
+do
+	echo $i ${amount[$i]}
+done | sort -rn -k2
+}
+echo "Luckiest Day:" $(getLuckyUnluckyDay | head -1)
+echo "Unlucky Day:" $(getLuckyUnluckyDay | tail -1)
+
+function playNextMonth(){
+while [[ ${amount[20]} -gt 0 ]]
+do
+	getTotalAmount
+	echo "play next month"
+	echo "Luckiest Day:" $(getLuckyUnluckyDay | head -1)
+	echo "Unlucky Day:" $(getLuckyUnluckyDay | tail -1)
+done
+echo "SOORY!! Less Amount Cant Play For Next Month"
+}
+playNextMonth
 
