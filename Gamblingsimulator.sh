@@ -45,3 +45,11 @@ function getTotalAmount() {
 }
 getTotalAmount
 
+function getLuckyUnluckyDay(){
+for i in ${!amount[@]}
+do
+	echo $i ${amount[$i]}
+done | sort -rn -k2
+}
+echo "Luckiest Day:" $(getLuckyUnluckyDay | head -1)
+echo "Unlucky Day:" $(getLuckyUnluckyDay | tail -1)
