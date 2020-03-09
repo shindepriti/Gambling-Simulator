@@ -55,14 +55,16 @@ echo "Luckiest Day:" $(getLuckyUnluckyDay | head -1)
 echo "Unlucky Day:" $(getLuckyUnluckyDay | tail -1)
 
 function playNextMonth(){
-while [[ ${amount[20]} -gt 0 ]]
-do
-	getTotalAmount
-	echo "play next month"
-	echo "Luckiest Day:" $(getLuckyUnluckyDay | head -1)
-	echo "Unlucky Day:" $(getLuckyUnluckyDay | tail -1)
-done
-echo "SOORY!! Less Amount Cant Play For Next Month"
+	while [[ ${amount[20]} -gt 0 ]]
+	do		
+		getTotalAmount
+		echo "Luckiest Day:" $(getLuckyUnluckyDay | head -1)
+		echo "Unlucky Day:" $(getLuckyUnluckyDay | tail -1)
+	done
+	echo "SOORY!! Less Amount Cant Play For Next Month"
 }
+getTotalAmount
+echo "Luckiest Day:" $(getLuckyUnluckyDay | head -1)
+echo "Unlucky Day:" $(getLuckyUnluckyDay | tail -1)
 playNextMonth
 
